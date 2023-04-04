@@ -11,7 +11,7 @@ export default function Todo(props) {
             <h4 className='text-light text-center'>TODO DATA</h4>
                 {
                     props.passData.map((todo)=>{
-                        return <Todos key={todo.id} designData={todo} />
+                        return <Todos key={todo.id} designData={todo}  onIdCheck={props.onIdCheck} />
                     })
                 }
             </div>

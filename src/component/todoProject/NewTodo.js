@@ -1,21 +1,15 @@
 import React, {useState} from 'react'
-import { v4 as uuidv4 } from 'uuid';
 export default function NewTodo(props) {
-    const [datas, setDatas] = useState()
-    const allDatas = props.passVal
+    const [datas, setDatas] = useState({title : "", desc : ""})
     const handelData = (e)=>{
-        const {title, desc} = datas
-        const findName = e.target.name;
-        if(findName === "title"){
-            setDatas({title : e.target.value, desc})
-        }else if(findName === "desc"){
-            setDatas({title, desc : e.target.value})
-        }
-        setDatas({id : uuidv4(), title : "", desc : ""})
+        const name = e.target.name;
+        setDatas((prev =>{
+            return {...prev, [name] : e.target.value}
+        }))
     }
     const handelSubmit = (e)=>{
+        props.passVal(datas)
         e.preventDefault();
-        console.log(datas);
     }
   return (
     <div className='bg-dark'>
